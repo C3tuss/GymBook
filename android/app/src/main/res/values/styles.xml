@@ -1,0 +1,10 @@
+<resources>
+    <style name="LaunchTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#111114</item>
+        <item name="android:colorAccent">#FF8A52</item>
+    </style>
+    <style name="NormalTheme" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#111114</item>
+        <item name="android:colorAccent">#FF8A52</item>
+    </style>
+</resources>
