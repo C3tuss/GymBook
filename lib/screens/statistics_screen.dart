@@ -93,7 +93,7 @@ DateTime _periodStart(DateTime date, StatisticsPeriod period) {
   switch (period) {
     case StatisticsPeriod.weekly:
       final daysSinceMonday = date.weekday - DateTime.monday;
-      return dateOnly(date.subtract(Duration(days: daysSinceMonday)));
+      return DateTime(date.year, date.month, date.day - daysSinceMonday);
     case StatisticsPeriod.monthly:
       return DateTime(date.year, date.month);
     case StatisticsPeriod.yearly:
@@ -106,7 +106,7 @@ DateTime _periodStart(DateTime date, StatisticsPeriod period) {
 DateTime _previousPeriodStart(DateTime start, StatisticsPeriod period) {
   switch (period) {
     case StatisticsPeriod.weekly:
-      return start.subtract(const Duration(days: 7));
+      return DateTime(start.year, start.month, start.day - 7);
     case StatisticsPeriod.monthly:
       return DateTime(start.year, start.month - 1);
     case StatisticsPeriod.yearly:
@@ -119,7 +119,7 @@ DateTime _previousPeriodStart(DateTime start, StatisticsPeriod period) {
 String _periodLabel(DateTime start, StatisticsPeriod period) {
   switch (period) {
     case StatisticsPeriod.weekly:
-      final end = start.add(const Duration(days: 6));
+      final end = DateTime(start.year, start.month, start.day + 6);
       return '${DateFormat('dd/MM', 'pt_BR').format(start)} – '
           '${DateFormat('dd/MM/yyyy', 'pt_BR').format(end)}';
     case StatisticsPeriod.monthly:

@@ -46,5 +46,22 @@ void main() {
       expect(rows.last.averageKg, 72);
       expect(rows.last.variationKg, isNull);
     });
+
+    test('não trata uma semana vazia como zero nem como período exibido', () {
+      final rows = calculateWeightStatistics(
+        records: [
+          WeightRecord(date: DateTime(2026, 11, 2), weightKg: 80),
+          WeightRecord(date: DateTime(2026, 11, 23), weightKg: 90),
+        ],
+        period: StatisticsPeriod.weekly,
+        customStart: DateTime(2026, 11, 1),
+        customEnd: DateTime(2026, 11, 30),
+      );
+
+      expect(rows, hasLength(2));
+      expect(rows.first.averageKg, 90);
+      expect(rows.first.variationKg, isNull);
+      expect(rows.first.movingAverageKg, 85);
+    });
   });
 }
