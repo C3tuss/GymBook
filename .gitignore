@@ -12,3 +12,4 @@
 *.iml
 .idea/
 .DS_Store
+/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
